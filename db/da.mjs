@@ -1,5 +1,6 @@
 import pg from 'pg'
 import DaCar from './dacar.mjs';
+import DaPayment from './dapayment.mjs';
 
 const pool = new pg.Pool ({
     host: 'localhost',
@@ -10,4 +11,5 @@ const pool = new pg.Pool ({
 })
 
 const daCar = new DaCar(pool);
-export {daCar};
+const daPayment = new DaPayment(pool);
+export {daCar, daPayment};

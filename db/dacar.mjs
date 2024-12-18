@@ -9,6 +9,10 @@ export default class DaCar {
         let queryParams = [];
         let whereClauses = [];
 
+        if(filters.id) {
+            whereClauses.push(`id = $${whereClauses.length + 1}`);
+            queryParams.push(filters.id);
+        }
         if (filters.make) {
             whereClauses.push(`make = $${whereClauses.length + 1}`);
             queryParams.push(filters.make);
@@ -41,6 +45,7 @@ export default class DaCar {
             whereClauses.push(`end_date > $${whereClauses.length + 1}`);
             queryParams.push(filters.endDate);
         }
+        
         
         if (whereClauses.length > 0) {
             queryStr += " WHERE " + whereClauses.join(" AND ");
